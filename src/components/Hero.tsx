@@ -15,7 +15,7 @@ export function Hero({t,start}:{t:Copy,start:()=>void}) {
     <div className="hero-copy"><p className="identity"><i/>{t.genre} <span>/</span> {t.role}</p>
     <h1>Neocosmic</h1><p className="tagline">{t.tagline}</p>
     <div className="actions"><button className="primary" onClick={start}><span aria-hidden="true">▶</span>{t.listen}</button><a className="secondary" href="#contato">{t.bookings}</a></div></div>
-    <button className="mix-tag" onClick={start}><img src="/media/cosmic-flow.jpg" alt=""/><span><small>{t.featured}</small><strong>Cosmic Flow 01</strong></span><b aria-hidden="true">▂▅▇▃▆▂</b></button>
+    <button className="mix-tag" onClick={start}><img src="/media/Capa Seed of Consciousness.jpg" alt=""/><span><small>{t.featured}</small><strong>Seed of Consciousness</strong></span><b aria-hidden="true">▂▅▇▃▆▂</b></button>
   </section>
 }
 

@@ -20,7 +20,7 @@ function App() {
     <Music t={t} player={player} select={select}/>
     <section className="section bio" id="sobre"><h2>{t.artist}</h2><div><p>{t.bio[0]}</p><details><summary>{t.more}</summary>{t.bio.slice(1).map(p=><p key={p}>{p}</p>)}</details></div></section>
     <Social t={t}/>
-    <section className="section contact" id="contato"><div><h2>{t.contact}</h2><a href="mailto:neocosmic@neocosmicmusic.com">neocosmic@neocosmicmusic.com</a><a href="https://wa.me/5549991088198">WhatsApp · +55 (49) 99108-8198</a></div><div><h3>Presskit</h3><p>{t.kitInfo}</p><a className="secondary" href="/media/neocosmic-presskit.zip" download>{t.kit} ↓</a></div></section>
+    <section className="section contact" id="contato"><div><h2>{t.contact}</h2><a href="mailto:neocosmicmusic@gmail.com">neocosmicmusic@gmail.com</a><a href="https://wa.me/5549991088198">WhatsApp · +55 (49) 99108-8198</a></div><div><h3>Presskit</h3><p>{t.kitInfo}</p><a className="secondary" href="/media/neocosmic-presskit.zip" download>{t.kit} ↓</a></div></section>
   </main><footer><img src="/media/symbol.png" alt=""/><span>© Neocosmic DJ/Producer. {t.rights}</span></footer></>
 }
 createRoot(document.getElementById('root')!).render(<App/>)
