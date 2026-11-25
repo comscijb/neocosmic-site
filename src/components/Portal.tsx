@@ -1,28 +1,31 @@
 import { useEffect, useRef } from 'react'
 
-// Draw the spiral once. CSS handles the entrance without a continuous render loop.
+// Fine latitude lines give the backlit disc the texture of an engraved record.
 export function Portal() {
   const ref = useRef<HTMLCanvasElement>(null)
+
   useEffect(() => {
     const ctx = ref.current?.getContext('2d')
     if (!ctx) return
-    ctx.clearRect(0, 0, 1000, 1000)
-    for (let i = 0; i < 112; i++) {
+    ctx.clearRect(0, 0, 900, 900)
+    ctx.strokeStyle = 'rgba(92, 57, 40, .24)'
+    ctx.lineWidth = 1.25
+
+    for (let latitude = -140; latitude < 1050; latitude += 5) {
       ctx.beginPath()
-      for (let j = 0; j <= 480; j++) {
-        const t = j * Math.PI / 240
-        const ripple = Math.sin(t * 6 + i * .053) * 11 + Math.cos(t * 3 - i * .04) * 19
-        const radius = 156 + i * 2.31 + ripple
-        const x = 500 + Math.cos(t) * radius
-        const y = 500 + Math.sin(t) * radius * .92
-        if (j === 0) ctx.moveTo(x,y)
-        else ctx.lineTo(x,y)
+      for (let x = 0; x <= 900; x += 6) {
+        const y = latitude + 48 * Math.sin(x / 230 + latitude / 210)
+          + 22 * Math.sin(x / 105 - latitude / 240)
+        if (x === 0) ctx.moveTo(x, y)
+        else ctx.lineTo(x, y)
       }
-      ctx.closePath()
-      ctx.strokeStyle = 'hsla(' + (278 + i * .32) + ', 93%, ' + (57 + 14 * Math.sin(i * .12)) + '%, ' + (.22 + .23 * Math.sin(i * .08) ** 2) + ')'
       ctx.stroke()
     }
   }, [])
-  return <canvas ref={ref} width="1000" height="1000" className="portal" aria-hidden="true" />
-}
 
+  return <div className="celestial" aria-hidden="true">
+    <div className="disc"><canvas width="900" height="900" ref={ref} /></div>
+    <i className="orbit orbit-wide" /><i className="orbit orbit-tilted" />
+    <i className="star star-high" /><i className="star star-low" />
+  </div>
+}
